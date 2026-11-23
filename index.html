@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beauty Space by Kovalska — салон краси на Сирці, Київ</title>
+<meta name="description" content="Салон краси Beauty Space by Kovalska: догляд за волоссям, нігтьовий сервіс, брови та вії, доглядові процедури. Київ, вул. Тираспольська, 52.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500;600&display=swap&subset=cyrillic" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{ink:'#1b1a18',ink2:'#242220',ink3:'#2e2b28',cream:'#f3ebdd',gold:'#c9a876',gold2:'#e2cc9e'},fontFamily:{serif:['"Cormorant Garamond"','Georgia','serif'],sans:['Manrope','system-ui','sans-serif']}}}}
+</script>
+<style>
+:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:84px;height:100%}
+body{background:#1b1a18;color:#f3ebdd;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.gold-text{background:linear-gradient(120deg,#e2cc9e,#c9a876 60%,#a98657);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:999px;padding:.95rem 1.7rem;font-weight:500;font-size:.95rem;transition:transform .25s,background .25s,color .25s,border-color .25s;min-height:48px}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:linear-gradient(120deg,#e2cc9e,#c9a876);color:#1b1a18}
+.btn-gold:hover{background:#f3ebdd}
+.btn-line{border:1px solid rgba(243,235,221,.35);color:#f3ebdd}
+.btn-line:hover{border-color:#c9a876;color:#c9a876}
+.arch{border-radius:999px 999px 1.5rem 1.5rem;background:radial-gradient(120% 80% at 30% 15%,#5a4a36 0%,#2e2a25 55%,#201e1b 100%);position:relative;overflow:hidden}
+.arch::after{content:"";position:absolute;inset:14px;border:1px solid rgba(201,168,118,.45);border-radius:inherit}
+.card{background:#242220;border:1px solid rgba(243,235,221,.08);border-radius:1.25rem;padding:1.6rem;transition:border-color .3s}
+.card:hover{border-color:rgba(201,168,118,.55)}
+.row{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px dashed rgba(243,235,221,.13);font-size:.95rem}
+.row:last-child{border-bottom:0}
+.row b{color:#e2cc9e;font-weight:500;white-space:nowrap}
+.hero-in{opacity:0;transform:translateY(18px);animation:in .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes in{to{opacity:1;transform:none}}
+.field{width:100%;background:#1b1a18;border:1px solid rgba(243,235,221,.18);border-radius:.9rem;padding:.9rem 1rem;color:#f3ebdd;font-size:16px;outline:none}
+.field:focus{border-color:#c9a876}
+a:focus-visible,button:focus-visible,.field:focus-visible{outline:2px solid #c9a876;outline-offset:3px}
+#modal{transition:opacity .3s}
+#modal.hidden-m{opacity:0;pointer-events:none}
+#modal .sheet{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+#modal.hidden-m .sheet{transform:translateY(30px)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero-in{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="fixed left-0 right-0 z-40 border-b border-cream/10 bg-ink/85 backdrop-blur-md" style="top:0;padding-top:env(safe-area-inset-top,0px)">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
+    <a href="#top" class="leading-none">
+      <span class="serif block text-xl font-semibold tracking-wide">Beauty Space <span class="text-gold">by Kovalska</span></span>
+      <span class="mt-1 block text-[10px] tracking-[.3em] text-cream/50">EST. 2020</span>
+    </a>
+    <nav class="hidden items-center gap-8 text-sm text-cream/80 md:flex">
+      <a class="hover:text-gold" href="#poslugy">Послуги</a>
+      <a class="hover:text-gold" href="#majstry">Майстри</a>
+      <a class="hover:text-gold" href="#pro-nas">Про нас</a>
+      <a class="hover:text-gold" href="#kontakty">Контакти</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button data-open class="btn btn-gold hidden !py-2.5 md:inline-flex">Записатися онлайн</button>
+      <button id="burger" aria-label="Відкрити меню" aria-expanded="false" class="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 md:hidden">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mmenu" class="hidden border-t border-cream/10 bg-ink px-5 pb-5 md:hidden">
+    <nav class="flex flex-col text-lg">
+      <a class="mm py-3.5 border-b border-cream/10" href="#poslugy">Послуги</a>
+      <a class="mm py-3.5 border-b border-cream/10" href="#majstry">Майстри</a>
+      <a class="mm py-3.5 border-b border-cream/10" href="#pro-nas">Про нас</a>
+      <a class="mm py-3.5" href="#kontakty">Контакти</a>
+    </nav>
+    <button data-open class="btn btn-gold mt-3 w-full">Записатися онлайн</button>
+  </div>
+</header>
+
+<main id="top">
+<!-- Hero -->
+<section class="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-32 md:grid-cols-[1.15fr_.85fr] md:pb-24 md:pt-40">
+  <div>
+    <h1 class="serif hero-in text-[2.9rem] font-medium leading-[1.02] sm:text-6xl lg:text-7xl" style="animation-delay:.1s">Простір вашої краси та стилю <span class="gold-text italic">на Сирці</span></h1>
+    <p class="hero-in mt-6 max-w-md text-base leading-relaxed text-cream/70 sm:text-lg" style="animation-delay:.3s">Експертний догляд, волосся, нігті та естетика в сучасному просторі.</p>
+    <div class="hero-in mt-9 flex flex-col gap-3 sm:flex-row" style="animation-delay:.5s">
+      <button data-open class="btn btn-gold">Записатися на процедуру</button>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="btn btn-line">Наш Instagram</a>
+    </div>
+  </div>
+  <div class="hero-in mx-auto w-full max-w-[320px] md:max-w-none" style="animation-delay:.4s">
+    <div class="arch flex aspect-[3/4] items-end justify-center p-8">
+      <div class="relative z-10 pb-4 text-center">
+        <p class="serif text-3xl italic text-gold2">Beauty Space</p>
+        <p class="mt-1 text-xs tracking-[.3em] text-cream/60">ТИРАСПОЛЬСЬКА, 52</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Про нас -->
+<section id="pro-nas" class="border-y border-cream/10 bg-ink2">
+  <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+    <div class="max-w-2xl">
+      <h2 class="serif text-4xl font-medium sm:text-5xl">Місце, де хочеться затриматися</h2>
+      <p class="mt-5 leading-relaxed text-cream/70">Beauty Space by Kovalska працює з 2020 року. Ми створили затишний простір поруч з вашим домом, де кожна процедура — це турбота, увага до деталей і результат, який тішить щодня.</p>
+    </div>
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="card"><svg class="mb-4 text-gold" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg><h3 class="serif text-2xl">Преміальна косметика</h3><p class="mt-2 text-sm leading-relaxed text-cream/65">Працюємо з перевіреними професійними брендами, дбайливими до шкіри й волосся.</p></div>
+      <div class="card"><svg class="mb-4 text-gold" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 11l9-7 9 7v9H3z"/><path d="M9 20v-6h6v6"/></svg><h3 class="serif text-2xl">Затишна атмосфера</h3><p class="mt-2 text-sm leading-relaxed text-cream/65">М’яке світло, тиша і запашна кава — тут можна по-справжньому видихнути.</p></div>
+      <div class="card"><svg class="mb-4 text-gold" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg><h3 class="serif text-2xl">Майстри високого рівня</h3><p class="mt-2 text-sm leading-relaxed text-cream/65">Досвідчені спеціалісти, які постійно навчаються та знають, що підійде саме вам.</p></div>
+      <div class="card"><svg class="mb-4 text-gold" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><h3 class="serif text-2xl">Зручна локація</h3><p class="mt-2 text-sm leading-relaxed text-cream/65">ЖК «Парковий місто» на Сирці — легко дістатися, є де припаркуватися.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Послуги -->
+<section id="poslugy" class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+  <div class="max-w-2xl">
+    <h2 class="serif text-4xl font-medium sm:text-5xl">Послуги та ціни</h2>
+    <p class="mt-4 text-cream/65">Орієнтовна вартість. Точну суму майстер назве після консультації.</p>
+  </div>
+  <div class="mt-10 grid gap-5 md:grid-cols-2">
+    <article class="card md:p-8">
+      <h3 class="serif text-3xl text-gold2">Волосся та фарбування</h3>
+      <div class="mt-4">
+        <div class="row"><span>Жіноча стрижка</span><b>від 800 ₴</b></div>
+        <div class="row"><span>Фарбування в один тон</span><b>від 1 800 ₴</b></div>
+        <div class="row"><span>Складне фарбування (AirTouch, балаяж)</span><b>від 3 500 ₴</b></div>
+        <div class="row"><span>Укладання</span><b>від 700 ₴</b></div>
+      </div>
+    </article>
+    <article class="card md:p-8">
+      <h3 class="serif text-3xl text-gold2">Нігтьовий сервіс</h3>
+      <div class="mt-4">
+        <div class="row"><span>Манікюр з покриттям</span><b>від 700 ₴</b></div>
+        <div class="row"><span>Педикюр з покриттям</span><b>від 900 ₴</b></div>
+        <div class="row"><span>Нарощування нігтів</span><b>від 1 300 ₴</b></div>
+        <div class="row"><span>Дизайн (1 ніготь)</span><b>від 50 ₴</b></div>
+      </div>
+    </article>
+    <article class="card md:p-8">
+      <h3 class="serif text-3xl text-gold2">Брови та вії</h3>
+      <div class="mt-4">
+        <div class="row"><span>Корекція та фарбування брів</span><b>від 450 ₴</b></div>
+        <div class="row"><span>Ламінування брів</span><b>від 800 ₴</b></div>
+        <div class="row"><span>Ламінування вій</span><b>від 900 ₴</b></div>
+        <div class="row"><span>Нарощування вій</span><b>від 1 200 ₴</b></div>
+      </div>
+    </article>
+    <article class="card md:p-8">
+      <h3 class="serif text-3xl text-gold2">Доглядові процедури</h3>
+      <div class="mt-4">
+        <div class="row"><span>Чистка обличчя</span><b>від 1 200 ₴</b></div>
+        <div class="row"><span>Відновлення волосся</span><b>від 1 000 ₴</b></div>
+        <div class="row"><span>Масаж обличчя</span><b>від 700 ₴</b></div>
+        <div class="row"><span>Індивідуальний догляд</span><b>за консультацією</b></div>
+      </div>
+    </article>
+  </div>
+  <div class="mt-10 text-center"><button data-open class="btn btn-gold">Обрати час візиту</button></div>
+</section>
+
+<!-- Майстри -->
+<section id="majstry" class="border-y border-cream/10 bg-ink2">
+  <div class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+    <h2 class="serif text-4xl font-medium sm:text-5xl">Наші майстри</h2>
+    <p class="mt-4 max-w-xl text-cream/65">Команда, яка поєднує досвід, смак і щире піклування про кожну клієнтку.</p>
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div><div class="arch aspect-[4/5]"></div><h3 class="serif mt-4 text-2xl">Стиліст-колорист</h3><p class="text-sm text-cream/60">Стрижки, фарбування, догляд</p></div>
+      <div><div class="arch aspect-[4/5]"></div><h3 class="serif mt-4 text-2xl">Майстер манікюру</h3><p class="text-sm text-cream/60">Манікюр, педикюр, дизайн</p></div>
+      <div><div class="arch aspect-[4/5]"></div><h3 class="serif mt-4 text-2xl">Бровист-лешмейкер</h3><p class="text-sm text-cream/60">Брови та вії</p></div>
+      <div><div class="arch aspect-[4/5]"></div><h3 class="serif mt-4 text-2xl">Косметолог-естетист</h3><p class="text-sm text-cream/60">Доглядові процедури</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Контакти -->
+<section id="kontakty" class="mx-auto max-w-6xl px-5 py-16 md:py-24">
+  <div class="grid gap-6 md:grid-cols-2">
+    <div class="card md:p-9">
+      <h2 class="serif text-4xl font-medium sm:text-5xl">Завітайте до нас</h2>
+      <ul class="mt-7 space-y-5 text-[15px]">
+        <li><span class="block text-sm text-cream/50">Адреса</span>Київ, вул. Тираспольська, 52<br><span class="text-cream/60">ЖК «Парковий місто»</span></li>
+        <li><span class="block text-sm text-cream/50">Графік роботи</span>Пн–Нд, до 21:00</li>
+        <li><span class="block text-sm text-cream/50">Телефон</span><a class="text-xl text-gold2 hover:text-cream" href="tel:+380955882415">+380 95 588 2415</a></li>
+      </ul>
+      <a class="btn btn-line mt-7" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Київ+вул.+Тираспольська+52">Прокласти маршрут</a>
+    </div>
+    <div class="card flex flex-col justify-between md:p-9">
+      <div>
+        <h3 class="serif text-3xl text-gold2">Швидкий запис</h3>
+        <p class="mt-3 text-cream/65">Оберіть зручний спосіб — відповімо якнайшвидше.</p>
+      </div>
+      <div class="mt-7 grid gap-3">
+        <a class="btn btn-gold" href="tel:+380955882415">Зателефонувати</a>
+        <a class="btn btn-line" href="viber://chat?number=%2B380955882415">Написати у Viber</a>
+        <a class="btn btn-line" target="_blank" rel="noopener" href="https://t.me/+380955882415">Написати в Telegram</a>
+        <button data-open class="btn btn-line">Залишити заявку</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="border-t border-cream/10 px-5 py-8 pb-28 text-center text-sm text-cream/45 md:pb-8">
+  <p class="serif text-xl text-cream/80">Beauty Space <span class="text-gold">by Kovalska</span></p>
+  <p class="mt-2">Київ, вул. Тираспольська, 52 · Пн–Нд до 21:00</p>
+  <p class="mt-1">© 2020–2026 Beauty Space by Kovalska. Усі права захищено.</p>
+</footer>
+
+<!-- Мобільна панель запису -->
+<div class="fixed bottom-0 left-0 right-0 z-30 flex gap-2 border-t border-cream/10 bg-ink/90 px-4 pt-3 backdrop-blur-md md:hidden" style="padding-bottom:calc(.75rem + env(safe-area-inset-bottom,0px))">
+  <a href="tel:+380955882415" aria-label="Зателефонувати" class="btn btn-line !px-0 w-14 shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></a>
+  <button data-open class="btn btn-gold flex-1">Записатися онлайн</button>
+</div>
+
+<!-- Модальна форма -->
+<div id="modal" class="hidden-m fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-0 sm:items-center sm:p-5" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+  <div class="sheet relative max-h-[92vh] w-full max-w-md overflow-y-auto rounded-t-3xl border border-cream/10 bg-ink2 p-6 sm:rounded-3xl sm:p-8" style="padding-bottom:calc(1.5rem + env(safe-area-inset-bottom,0px))">
+    <button id="mclose" aria-label="Закрити" class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-xl leading-none">×</button>
+    <div id="mform">
+      <h2 id="mtitle" class="serif pr-10 text-3xl text-gold2">Запис на процедуру</h2>
+      <p class="mt-2 text-sm text-cream/60">Залиште контакти — адміністратор зателефонує та підбере час.</p>
+      <form id="f" class="mt-6 space-y-3" novalidate>
+        <input class="field" name="name" placeholder="Ваше ім’я" autocomplete="name" required>
+        <input class="field" name="phone" type="tel" inputmode="tel" placeholder="+380 __ ___ __ __" autocomplete="tel" required>
+        <select class="field" name="service">
+          <option>Волосся та фарбування</option><option>Нігтьовий сервіс</option><option>Брови та вії</option><option>Доглядові процедури</option>
+        </select>
+        <input class="field" name="date" type="date" aria-label="Бажана дата">
+        <p id="ferr" class="hidden text-sm text-[#e7a58b]">Вкажіть ім’я та номер телефону, щоб ми могли зв’язатися з вами.</p>
+        <button class="btn btn-gold w-full" type="submit">Надіслати заявку</button>
+      </form>
+    </div>
+    <div id="mok" class="hidden py-6 text-center">
+      <p class="serif text-3xl text-gold2">Дякуємо!</p>
+      <p class="mt-3 text-cream/70">Вашу заявку отримано. Ми зателефонуємо найближчим часом. Якщо хочете швидше — наберіть нас самі.</p>
+      <a href="tel:+380955882415" class="btn btn-gold mt-6 w-full">+380 95 588 2415</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const m=document.getElementById('modal'),mf=document.getElementById('mform'),mo=document.getElementById('mok');
+function openM(){mf.classList.remove('hidden');mo.classList.add('hidden');m.classList.remove('hidden-m');document.body.style.overflow='hidden';setTimeout(()=>m.querySelector('input').focus(),300)}
+function closeM(){m.classList.add('hidden-m');document.body.style.overflow=''}
+document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>{document.getElementById('mmenu').classList.add('hidden');openM()}));
+document.getElementById('mclose').onclick=closeM;
+m.addEventListener('click',e=>{if(e.target===m)closeM()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+const bg=document.getElementById('burger'),mm=document.getElementById('mmenu');
+bg.onclick=()=>{const h=mm.classList.toggle('hidden');bg.setAttribute('aria-expanded',String(!h))};
+document.querySelectorAll('.mm').forEach(a=>a.onclick=()=>mm.classList.add('hidden'));
+document.getElementById('f').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target;
+  const ok=f.name.value.trim().length>1&&f.phone.value.replace(/\D/g,'').length>=9;
+  document.getElementById('ferr').classList.toggle('hidden',ok);
+  if(!ok)return;
+  mf.classList.add('hidden');mo.classList.remove('hidden');f.reset();
+});
+</script>
+</body>
+</html>
